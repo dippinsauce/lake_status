@@ -1,1 +1,3 @@
 # lake_status
+
+Step one.. Figure out how to make changes go from git to lakepi...
