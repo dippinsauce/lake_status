@@ -68,7 +68,7 @@ if __name__ == '__main__':
     logging.debug('trying to get data from dht22')
     try:
         pi = pigpio.pi()
-        dht22 = DHT22.sensor(pi, 4)
+        dht22 = DHT22.sensor(pi, 4, None, 24)
         #trigger the event, gather the data
         dht22.trigger()
         #check to see if data is relevant, first reading is generally bad, -999 is not right...
@@ -80,12 +80,12 @@ if __name__ == '__main__':
             logging.debug('bad data from sensor, count : %10o' % count)
             time.sleep(3)
             dht22.trigger()
-    	    #error occured, twnety queries to sensor (1min) and no data.
+            #error occurred, twenty queries to sensor (1min) and no data.
             if count > 20:
                 logging.error("Sensor didn't return any data.  Exiting.")
                 sys.exit(2)
 
-    #error occured, write to user log and exit.
+    #error occurred, write to user log and exit.
     except:
         logging.error('lake_status:GetConditions.py failed reading dht22 sensor')
         sys.exit(1)
