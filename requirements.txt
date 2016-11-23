@@ -1,0 +1,2 @@
+cymysql==0.8.7
+simplejson==3.8.2
